@@ -1,0 +1,12 @@
+{
+    "devices": [
+        {
+            "name":"exagate-pdu",
+            "port":40001
+        },
+        {
+            "name": "exagate-pdu",
+            "port":40002
+        }
+    ]
+}
