@@ -19,16 +19,9 @@ class Agent {
         });
 
         this.server.on('message', (msg, rinfo) => {
-            
-            var binaryMessageValues = [];
-            for (const value of msg.values()) {
-                binaryMessageValues.push(value.toString(16));
-              }
-            this.processMessage(binaryMessageValues);
-
+            this.processMessage(msg);
             //console.log("Data => " + binaryMessageValues.join(","));
-            //console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-
+            //console.log(`server got: ${msg.toString('utf8', 2)} from ${rinfo.address}:${rinfo.port}`);
         });
 
         this.server.on('listening', () => {
@@ -44,8 +37,6 @@ class Agent {
         console.log(message.toString());
     }
 }
-
-
 
 class Device {
     constructor(deviceName)
