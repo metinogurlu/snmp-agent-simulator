@@ -1,6 +1,6 @@
 let dgram = require('dgram');
 let fs = require('fs');
-let snmpMessage = require('./snmp-message')
+let snmpMessage = require('../snmp-message')
 
 class Agent {
     constructor(deviceName, port){
