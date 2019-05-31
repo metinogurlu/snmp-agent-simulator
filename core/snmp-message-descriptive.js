@@ -68,5 +68,5 @@ class SnmpMessageDescriptive {
 exports.SnmpMessageDescriptive = SnmpMessageDescriptive;
 
 
-step = 0
-nextLengthValue = i + length//3)
+//step = 0
+//nextLengthValue = i + length//3)

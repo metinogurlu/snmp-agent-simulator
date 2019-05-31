@@ -1,6 +1,6 @@
 let dgram = require('dgram');
 let fs = require('fs');
-let snmpMessage = require('../snmp-message')
+let snmpMessage = require('./snmp-message')
 
 class Agent {
     constructor(deviceName, port){
@@ -47,7 +47,7 @@ class Device {
 
     GetDeviceConfig() {
         let device;
-        let fileName = `${this.deviceName}.json`;
+        let fileName = `../devices/${this.deviceName}.json`;
         fs.readFile(fileName, 'utf8', (err, data) => {
             if(err)
                 throw err;
