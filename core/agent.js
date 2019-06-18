@@ -1,6 +1,6 @@
 let dgram = require('dgram');
 let fs = require('fs');
-let snmpMessage = require('../snmp-message')
+let snmpMessage = require('./snmp-message')
 
 class Agent {
     constructor(deviceName, port){
@@ -19,9 +19,7 @@ class Agent {
         });
 
         this.server.on('message', (msg, rinfo) => {
-            this.processMessage(msg);
-            //console.log("Data => " + binaryMessageValues.join(","));
-            //console.log(`server got: ${msg.toString('utf8', 2)} from ${rinfo.address}:${rinfo.port}`);
+            this.processMessage(rinfo, msg);
         });
 
         this.server.on('listening', () => {
@@ -32,8 +30,8 @@ class Agent {
         this.server.bind(this.port);
     }
 
-    processMessage(binaryMessage) {
-        let message = new snmpMessage.SnmpMessage(binaryMessage);
+    processMessage(rinfo, binaryMessage) {
+        let message = new snmpMessage.SnmpMessage(rinfo.address, rinfo.port, binaryMessage);
         console.log(message.toString());
     }
 }
@@ -47,7 +45,7 @@ class Device {
 
     GetDeviceConfig() {
         let device;
-        let fileName = `${this.deviceName}.json`;
+        let fileName = `../devices/${this.deviceName}.json`;
         fs.readFile(fileName, 'utf8', (err, data) => {
             if(err)
                 throw err;
