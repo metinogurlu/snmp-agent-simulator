@@ -19,9 +19,7 @@ class Agent {
         });
 
         this.server.on('message', (msg, rinfo) => {
-            this.processMessage(msg);
-            //console.log("Data => " + binaryMessageValues.join(","));
-            //console.log(`server got: ${msg.toString('utf8', 2)} from ${rinfo.address}:${rinfo.port}`);
+            this.processMessage(rinfo, msg);
         });
 
         this.server.on('listening', () => {
@@ -32,8 +30,8 @@ class Agent {
         this.server.bind(this.port);
     }
 
-    processMessage(binaryMessage) {
-        let message = new snmpMessage.SnmpMessage(binaryMessage);
+    processMessage(rinfo, binaryMessage) {
+        let message = new snmpMessage.SnmpMessage(rinfo.address, rinfo.port, binaryMessage);
         console.log(message.toString());
     }
 }
