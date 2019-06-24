@@ -1,22 +1,11 @@
 const snmpDescriptive = require("./snmp-message-descriptive");
 const rawMessageBuilder = require("./raw-message")
+let constants = require('./constants')
 
 let rawMessage = new rawMessageBuilder.RawMessage();
 let descriptive = new snmpDescriptive.SnmpMessageDescriptive();
-
-const SnmpMessagePart = {
-  MESSAGE: 0,
-  VERSION: 1,
-  COMMUNITYSTRING: 2,
-  PDU: 3,
-  REQUESTID: 4,
-  ERROR: 5,
-  ERRORINDEX: 6,
-  VARBINDLIST: 7,
-  VARBIND: 8,
-  OID: 9,
-  VALUE: 10
-}
+let MessagePart = constants.MessagePart;
+let MessageType = constants.MessageType;
 
 class SnmpMessage {
 
@@ -38,14 +27,14 @@ class SnmpMessage {
 
   decomposeMessage(message) {
 
-    let step = SnmpMessagePart.MESSAGE
+    let step = MessagePart.MESSAGE
     let firstByteIndexOfNextSection = 2
     let splittedMessage = [[]]
-    let dontConsiderThisSections = [SnmpMessagePart.MESSAGE, SnmpMessagePart.PDU, SnmpMessagePart.VARBINDLIST, SnmpMessagePart.VARBIND]
+    let dontConsiderThisSections = [MessagePart.MESSAGE, MessagePart.PDU, MessagePart.VARBINDLIST, MessagePart.VARBIND]
 
     for (var i = 0; i < message.length; i++) {
 
-      if (i >= firstByteIndexOfNextSection && step < SnmpMessagePart.VALUE) {
+      if (i >= firstByteIndexOfNextSection && step < MessagePart.VALUE) {
 
         firstByteIndexOfNextSection = dontConsiderThisSections.includes(step + 1) ?
           (i + 2) :
@@ -62,17 +51,17 @@ class SnmpMessage {
 
   resolveMessage(message) {
     
-    rawMessage.message = message[SnmpMessagePart.MESSAGE];
-    rawMessage.version = message[SnmpMessagePart.VERSION];
-    rawMessage.communityString = message[SnmpMessagePart.COMMUNITYSTRING]
-    rawMessage.snmpPdu = message[SnmpMessagePart.PDU]
-    rawMessage.requestId = message[SnmpMessagePart.REQUESTID]
-    rawMessage.error = message[SnmpMessagePart.ERROR];
-    rawMessage.errorIndex = message[SnmpMessagePart.ERRORINDEX]
-    rawMessage.varBindList = message[SnmpMessagePart.VARBINDLIST];
-    rawMessage.varBind = message[SnmpMessagePart.VARBIND];
-    rawMessage.objectIdentifier = message[SnmpMessagePart.OID];
-    rawMessage.value = message[SnmpMessagePart.VALUE];
+    rawMessage.message = message[MessagePart.MESSAGE];
+    rawMessage.version = message[MessagePart.VERSION];
+    rawMessage.communityString = message[MessagePart.COMMUNITYSTRING]
+    rawMessage.snmpPdu = message[MessagePart.PDU]
+    rawMessage.requestId = message[MessagePart.REQUESTID]
+    rawMessage.error = message[MessagePart.ERROR];
+    rawMessage.errorIndex = message[MessagePart.ERRORINDEX]
+    rawMessage.varBindList = message[MessagePart.VARBINDLIST];
+    rawMessage.varBind = message[MessagePart.VARBIND];
+    rawMessage.objectIdentifier = message[MessagePart.OID];
+    rawMessage.value = message[MessagePart.VALUE];
 
     this.version = rawMessage.version[rawMessage.version.length - 1] + 1;
     this.communityString = new Buffer.from(rawMessage.communityString).toString('utf8', 2);
