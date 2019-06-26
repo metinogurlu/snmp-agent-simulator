@@ -51,17 +51,19 @@ class SnmpMessage {
 
   resolveMessage(message) {
     
-    rawMessage.message = message[MessagePart.MESSAGE];
-    rawMessage.version = message[MessagePart.VERSION];
+    rawMessage.message = message[MessagePart.MESSAGE]
+    rawMessage.version = message[MessagePart.VERSION]
     rawMessage.communityString = message[MessagePart.COMMUNITYSTRING]
     rawMessage.snmpPdu = message[MessagePart.PDU]
     rawMessage.requestId = message[MessagePart.REQUESTID]
-    rawMessage.error = message[MessagePart.ERROR];
+    rawMessage.error = message[MessagePart.ERROR]
     rawMessage.errorIndex = message[MessagePart.ERRORINDEX]
-    rawMessage.varBindList = message[MessagePart.VARBINDLIST];
-    rawMessage.varBind = message[MessagePart.VARBIND];
-    rawMessage.objectIdentifier = message[MessagePart.OID];
-    rawMessage.value = message[MessagePart.VALUE];
+    rawMessage.varBindList = message[MessagePart.VARBINDLIST]
+    rawMessage.varBind = message[MessagePart.VARBIND]
+    rawMessage.objectIdentifier = message[MessagePart.OID]
+    rawMessage.value = message[MessagePart.VALUE]
+
+    console.log(rawMessage);
 
     this.version = rawMessage.version[rawMessage.version.length - 1] + 1;
     this.communityString = new Buffer.from(rawMessage.communityString).toString('utf8', 2);
