@@ -1,6 +1,7 @@
-let dgram = require('dgram');
-let fs = require('fs');
-let snmpMessage = require('./snmp-message')
+const dgram = require('dgram');
+const fs = require('fs');
+const GetRequestMessage = require('../messaging/get-request-message.js').GetRequestMessage
+const GetResponseMessage = require('../messaging/get-response-message.js').GetResponseMessage
 
 class Agent {
     constructor(deviceName, port){
@@ -33,8 +34,9 @@ class Agent {
     }
 
     processMessage(rinfo, binaryMessage) {
-        let message = new snmpMessage.SnmpMessage(rinfo.address, rinfo.port, binaryMessage);
-        console.log(message.toString());
+        let getRequestMessage = new GetRequestMessage(rinfo.address, rinfo.port, binaryMessage);
+        let getResponseMessage = new GetResponseMessage(getRequestMessage);
+        console.log(getResponseMessage.request)
     }
 }
 

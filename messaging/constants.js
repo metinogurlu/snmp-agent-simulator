@@ -12,12 +12,20 @@ const MessagePart = {
     VALUE: 10
   }
   
-  const MessageType = {
+  const ComplexDataType = {
     SEQUENCE: 0x30,
     GETREQUEST: 0xA0,
     GETRESPONSE: 0xA2,
     SETREQUEST: 0xA3
   }
 
-  exports.MessagePart = MessagePart;
-  exports. MessageType = MessageType;
+  const PrimitiveDataType = {
+    INTEGER: 0x02,
+    OCTETSTRING: 0x04,
+    NULL: 0x05,
+    OBJECTIDENTIFIER: 0x06
+  }
+
+  exports.MessagePart = MessagePart
+  exports.ComplexDataType = ComplexDataType
+  exports.PrimitiveDataType = PrimitiveDataType
