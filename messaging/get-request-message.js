@@ -1,5 +1,6 @@
 const RawMessage = require("./raw-message").RawMessage
 const SnmpMessage = require('./snmp-message').SnmpMessage
+const ObjectIdentifier = require('./object-identifier').ObjectIdentifier
 let constants = require('./constants')
 
 let MessagePart = constants.MessagePart;
@@ -33,7 +34,7 @@ class GetRequestMessage extends SnmpMessage {
 
         splittedMessage[++step] = [];
       }
-
+      
       splittedMessage[step].push(this.messageBuffer[i])
     }
 
@@ -46,9 +47,9 @@ class GetRequestMessage extends SnmpMessage {
 
     this.version = this.rawMessage.version[this.rawMessage.version.length - 1] + 1;
     this.communityString = new Buffer.from(this.rawMessage.communityString).toString('utf8', 2);
-    this.oid = ".1.3." + this.rawMessage.objectIdentifier.slice(3).join('.');
+    this.oid = new ObjectIdentifier(this.rawMessage.objectIdentifier.slice(2));
     this.snmpValue = this.rawMessage.value.slice(2).toString();
-    this.requestId = new Buffer.from(this.rawMessage.requestId).toString();
+    this.requestId = this.rawMessage.requestId
   }
 
   toString() {

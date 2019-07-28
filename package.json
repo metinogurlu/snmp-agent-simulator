@@ -15,7 +15,5 @@
   ],
   "author": "metinogurlu",
   "license": "ISC",
-  "dependencies": {
-    "asn1js": "^2.0.22"
-  }
+  "dependencies": {}
 }
