@@ -4,18 +4,25 @@
         {
             "name": "Voltage",
             "oid": "1.3.6.1.4.1.9.9.13.1.5.1.4",
-            "value_min" : 210,
-            "value_max": 235,
+            "valueMin" : 210,
+            "valueMax": 235,
             "multiplier" : 100,
-            "change_factor" : 0.1
+            "changeFactor" : 0.005,
+            "alarmFactor" : 0.05
         },
         {
             "name": "Current",
             "oid": "1.3.6.1.4.1.9.9.13.1.5.1.5",
-            "value_min" : 0,
-            "value_max": 32,
+            "valueMin" : 0,
+            "valueMax": 32,
             "multiplier" : 10,
-            "change_factor" : 0.001
+            "changeFactor" : 0.005,
+            "alarmFactor" : 0.05
+        },
+        {
+            "name": "Name",
+            "oid": "1.3.6.1.4.1.9.9.13.1.5.1.6",
+            "value" : "Exagate PDU"
         }
     ]
 }
