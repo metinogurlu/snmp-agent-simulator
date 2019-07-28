@@ -1,6 +1,7 @@
-let dgram = require('dgram');
-let fs = require('fs');
-let snmpMessage = require('./snmp-message')
+const dgram = require('dgram');
+const fs = require('fs');
+const GetRequestMessage = require('../messaging/get-request-message.js').GetRequestMessage
+const GetResponseMessage = require('../messaging/get-response-message.js').GetResponseMessage
 
 class Agent {
     constructor(deviceName, port){
@@ -19,7 +20,8 @@ class Agent {
         });
 
         this.server.on('message', (msg, rinfo) => {
-            this.processMessage(rinfo, msg);
+            let getResponseMessage = this.processMessage(rinfo, msg);
+            this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => console.log(err));
         });
 
         this.server.on('listening', () => {
@@ -31,8 +33,10 @@ class Agent {
     }
 
     processMessage(rinfo, binaryMessage) {
-        let message = new snmpMessage.SnmpMessage(rinfo.address, rinfo.port, binaryMessage);
-        console.log(message.toString());
+        let getRequestMessage = new GetRequestMessage(rinfo.address, rinfo.port, binaryMessage);
+        let getResponseMessage = new GetResponseMessage(getRequestMessage);
+
+        return new Buffer.from(getResponseMessage.request)
     }
 }
 
@@ -43,17 +47,15 @@ class Device {
         this.GetDeviceConfig();
     }
 
-    GetDeviceConfig() {
-        let device;
-        let fileName = `../devices/${this.deviceName}.json`;
-        fs.readFile(fileName, 'utf8', (err, data) => {
-            if(err)
-                throw err;
-            device = JSON.parse(data);
-        });
-
-        //console.log(device);
-    }
+    // GetDeviceConfig() {
+    //     let device;
+    //     let fileName = `../devices/${this.deviceName}.json`;
+    //     fs.readFile(fileName, 'utf8', (err, data) => {
+    //         if(err)
+    //             throw err;
+    //         device = JSON.parse(data);
+    //     });
+    // }
 }
 
 exports.Agent = Agent;
