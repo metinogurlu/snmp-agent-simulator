@@ -34,10 +34,10 @@ class Tag {
 
         ++this.changeCount
         
-        let randValueBetweenLimits = Math.random() * (this.valueMax - this.valueMin) + this.valueMin
-        let differenceRatio = 1 - (Math.min(this.currentValue, randValueBetweenLimits) / Math.max(this.currentValue, randValueBetweenLimits))
-        differenceRatio = Math.min(differenceRatio, this.changeFactor) + this.alarmFactor
+        let differenceRatio = Math.random() * this.changeFactor
         let nextValue = this.currentValue + ((Math.random() > 0.5 ? 1 : -1) * (differenceRatio * this.currentValue))
+        if(this.IsOutOfRange(nextValue))
+            nextValue = this.GetReArrangedValue()
 
         if(this.IsAlarmValue(nextValue) && !this.IsOkForAlarm())
             nextValue = this.GetReArrangedValue()
@@ -46,43 +46,6 @@ class Tag {
 
         return Math.floor(nextValue * this.multiplier)
     }
-
-    // TestValue() {
-    //     this.alarmCount = 0
-    //     this.changeCount = 0
-    //     let arr = []
-    //     let testCount = 1000
-    //     for (let index = 0; index < testCount; index++) {
-    //         ++this.changeCount
-    //         this.valueMin = 210
-    //         this.value = 220
-    //         this.valueMax = 230
-    //         this.changeFactor = 0.005
-    //         this.alarmFactor = 0.05
-            
-    //         let randValueBetweenLimits = Math.random() * (this.valueMax - this.valueMin) + this.valueMin
-    //         let differenceRatio = 1 - (Math.min(this.value, randValueBetweenLimits) / Math.max(this.value, randValueBetweenLimits))
-    //         differenceRatio = Math.min(differenceRatio, this.changeFactor) + this.alarmFactor
-    //         let nextValue = this.value + ((Math.random() > 0.5 ? 1 : -1) * (differenceRatio * this.value))
-
-    //         if(this.IsAlarmValue(nextValue) && !this.IsOkForAlarm()) {
-    //             nextValue = this.GetReArrangedValue()
-    //         }            
-    //         else if((this.IsAlarmValue(nextValue) && this.IsOkForAlarm()))
-    //         {
-    //             ++this.alarmCount
-    //         }
-
-    //         arr.push(nextValue)
-            
-    //     }
-    //     //console.log(arr.join(','))
-    //     console.log("over max: " + arr.filter(x => x > this.valueMax).length)
-    //     console.log("over min: " + arr.filter(x => x < this.valueMin).length)
-    //     console.log("alarmcount: " + this.alarmCount)
-    //     console.log(this.currentAlarmFactor)
-        
-    // }
 
     GetReArrangedValue() {
         return Math.random() * (this.valueMax - this.valueMin) + this.valueMin
@@ -94,6 +57,10 @@ class Tag {
 
     IsOkForAlarm() {
         return this.currentAlarmFactor < this.alarmFactor
+    }
+
+    IsOutOfRange(value) {
+        return (value < this.valueMin && this.valueMin >= 0)
     }
 
     get currentAlarmFactor() {

@@ -7,7 +7,7 @@
             "valueMin" : 210,
             "valueMax": 235,
             "multiplier" : 100,
-            "changeFactor" : 0.005,
+            "changeFactor" : 0.03,
             "alarmFactor" : 0.05
         },
         {
@@ -16,7 +16,7 @@
             "valueMin" : 0,
             "valueMax": 32,
             "multiplier" : 10,
-            "changeFactor" : 0.005,
+            "changeFactor" : 0.05,
             "alarmFactor" : 0.05
         },
         {

@@ -23,7 +23,7 @@ class Agent {
 
         this.server.on('message', (msg, rinfo) => {
             let getResponseMessage = this.processMessage(rinfo, msg);
-            this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => console.log(err));
+            this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => { if(err === undefined) console.log(err) });
         });
 
         this.server.on('listening', () => {
@@ -39,6 +39,11 @@ class Agent {
         let tag = this.device.tags.find(t => t.oid === getRequestMessage.oid.oidString)
         
         let getResponseMessage = new GetResponseMessage(getRequestMessage, tag.GetNextValue());
+
+        // var req = getResponseMessage.request
+
+        // req[req.length-1] = 128
+        // console.log(Buffer.from(req.slice(req.length - 3, req.length)))
 
         return new Buffer.from(getResponseMessage.request)
     }
