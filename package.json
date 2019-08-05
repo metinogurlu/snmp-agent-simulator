@@ -2,16 +2,16 @@
   "name": "snmp-agent-simulator",
   "version": "1.0.0",
   "description": "",
-  "main": "agent.js",
+  "main": "app.js",
   "scripts": {
-    "test": "test.js"
+    "test": "node ./tests/client.js"
   },
   "repository": {
     "type": "git",
     "url": "metinogurlu"
   },
   "keywords": [
-    "snmp"
+    "snmp, snmp agent, simulator, snmp device"
   ],
   "author": "metinogurlu",
   "license": "ISC",
