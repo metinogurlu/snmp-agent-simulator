@@ -67,8 +67,3 @@ class ObjectIdentifier {
 }
 
 exports.ObjectIdentifier = ObjectIdentifier
-
-// let oid = new ObjectIdentifier('1.3.6.1.4.1.35483.1.1.1.3.1')
-// console.log(oid.oidString)
-// console.log(oid.oidArray)
-// console.log(oid.encodedOid)

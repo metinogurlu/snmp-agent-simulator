@@ -9,12 +9,25 @@ class GetResponseMessage extends SnmpMessage {
         super(requestMessage.ip, requestMessage.port, requestMessage.version, requestMessage.communityString,
              requestMessage.oid, null, requestMessage.requestId)
         this.dataType = dataType
-        this.request;
+        this.value = value;
     }
 
     get snmpValue() {
-        let returnValue = Array.from('ahmet', x => x.charCodeAt(0))
-        let returnType = PrimitiveDataType.OCTETSTRING
+        var valueStr = this.value.toString(16)
+        
+        if(this.value > 127 && this.value < 256)
+            valueStr = "00" + valueStr
+        
+        if(valueStr.length % 2)
+            valueStr = "0" + valueStr
+        var valueArr = []
+        
+        for (let index = 0; index <= valueStr.length - 2; index += 2) {
+            valueArr.push(parseInt(valueStr.slice(index, index + 2), 16))
+        }
+
+        let returnValue = valueArr
+        let returnType = PrimitiveDataType.INTEGER
         let length = returnValue.length
         return [].concat(returnType, length, returnValue)
     }

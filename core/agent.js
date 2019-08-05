@@ -1,7 +1,9 @@
 const dgram = require('dgram');
-const fs = require('fs');
 const GetRequestMessage = require('../messaging/get-request-message.js').GetRequestMessage
 const GetResponseMessage = require('../messaging/get-response-message.js').GetResponseMessage
+const ObjectIdentifier = require('../messaging/object-identifier.js').ObjectIdentifier
+const Device = require('./device').Device
+const Tag = require('./tag').Tag
 
 class Agent {
     constructor(deviceName, port){
@@ -9,7 +11,7 @@ class Agent {
         this.port = port;
         this.server = dgram.createSocket('udp4')
         this.setServerEvents();
-        this.device = new Device(deviceName);
+        this.device = new Device(deviceName)
     }
 
     setServerEvents() {
@@ -21,7 +23,7 @@ class Agent {
 
         this.server.on('message', (msg, rinfo) => {
             let getResponseMessage = this.processMessage(rinfo, msg);
-            this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => console.log(err));
+            this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => { if(err === undefined) console.log(err) });
         });
 
         this.server.on('listening', () => {
@@ -34,29 +36,17 @@ class Agent {
 
     processMessage(rinfo, binaryMessage) {
         let getRequestMessage = new GetRequestMessage(rinfo.address, rinfo.port, binaryMessage);
-        let getResponseMessage = new GetResponseMessage(getRequestMessage);
+        let tag = this.device.tags.find(t => t.oid === getRequestMessage.oid.oidString)
+        
+        let getResponseMessage = new GetResponseMessage(getRequestMessage, tag.GetNextValue());
+
+        // var req = getResponseMessage.request
+
+        // req[req.length-1] = 128
+        // console.log(Buffer.from(req.slice(req.length - 3, req.length)))
 
         return new Buffer.from(getResponseMessage.request)
     }
 }
 
-class Device {
-    constructor(deviceName)
-    {
-        this.deviceName = deviceName
-        this.GetDeviceConfig();
-    }
-
-    // GetDeviceConfig() {
-    //     let device;
-    //     let fileName = `../devices/${this.deviceName}.json`;
-    //     fs.readFile(fileName, 'utf8', (err, data) => {
-    //         if(err)
-    //             throw err;
-    //         device = JSON.parse(data);
-    //     });
-    // }
-}
-
 exports.Agent = Agent;
-exports.Device = Device;
