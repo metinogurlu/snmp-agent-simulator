@@ -1,11 +1,9 @@
-// const dgram = require('dgram');
-// const message = Buffer.from('Some bytes');
-// const client = dgram.createSocket('udp4');
-// client.send(message, 40001, 'localhost', (err) => {
-//   client.close();
-// });
-// client.send(message, 40002, 'localhost', (err) => {
-//     client.close();
-//   });
-
-//console.log("test")
+var assert = require('assert');
+describe('Basic Mocha String Test', function () {
+ it('should return number of charachters in a string', function () {
+        assert.equal("Hello".length, 4);
+    });
+ it('should return first charachter of the string', function () {
+        assert.equal("Hello".charAt(0), 'H');
+    });
+});

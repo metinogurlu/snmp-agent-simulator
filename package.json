@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "node ./tests/client.js"
+    "test": "mocha ./tests/client.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   ],
   "author": "metinogurlu",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  }
 }
