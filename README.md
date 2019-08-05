@@ -1,0 +1,1 @@
+This simulator acts as there are n number snmp devices on network. Snmp Agent Simulator responds to snmp requests according to predefined rules. This way you can work with SNMP devices without having the physical device.
