@@ -1,5 +1,5 @@
 const fs = require('fs');
-var path = require('path');
+const path = require('path');
 const Tag = require('./tag').Tag
 class Device {
     constructor(deviceName)
@@ -16,7 +16,7 @@ class Device {
     }
 
     GetDeviceConfig() {
-        let fileName = `/home/met/projects/snmp-agent-simulator/devices/${this.deviceName}.json`;
+        let fileName = path.join(path.dirname(__dirname), "devices", `${this.deviceName}.json`);
         return JSON.parse(fs.readFileSync(fileName))
     }
 }
