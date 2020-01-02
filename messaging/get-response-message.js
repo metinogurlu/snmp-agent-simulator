@@ -91,6 +91,9 @@ class GetResponseMessage extends SnmpMessage {
     GetOid() {
         return this.oid.encodedOid
     }
+    toString() {
+        return this;
+    }
 }
 
 

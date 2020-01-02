@@ -4,9 +4,9 @@
         {
             "name": "Voltage",
             "oid": "1.3.6.1.4.1.9.9.13.1.5.1.4",
-            "valueMin" : 210,
-            "valueMax": 235,
-            "multiplier" : 100,
+            "valueMin" : 21,
+            "valueMax": 23,
+            "multiplier" : 10,
             "changeFactor" : 0.03,
             "alarmFactor" : 0.05
         },
