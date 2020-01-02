@@ -40,7 +40,8 @@ class Agent {
         console.log(getRequestMessage);
         
         let getResponseMessage = new GetResponseMessage(getRequestMessage, tag.GetNextValue());
-        console.log(getResponseMessage.toString())
+        
+        console.log(Buffer.from(getResponseMessage.request))
 
         return new Buffer.from(getResponseMessage.request)
     }
