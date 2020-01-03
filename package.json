@@ -1,8 +1,8 @@
 {
   "name": "snmp-agent-simulator",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "snmp agent simulator for simulate number of snmp devices on network",
+  "main": "/core/app.js",
   "scripts": {
     "test": "mocha ./tests/client.js"
   },

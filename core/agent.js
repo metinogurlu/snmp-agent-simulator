@@ -37,13 +37,11 @@ class Agent {
     processMessage(rinfo, binaryMessage) {
         let getRequestMessage = new GetRequestMessage(rinfo.address, rinfo.port, binaryMessage);
         let tag = this.device.tags.find(t => t.oid === getRequestMessage.oid.oidString)
+        console.log(getRequestMessage);
         
         let getResponseMessage = new GetResponseMessage(getRequestMessage, tag.GetNextValue());
-
-        // var req = getResponseMessage.request
-
-        // req[req.length-1] = 128
-        // console.log(Buffer.from(req.slice(req.length - 3, req.length)))
+        
+        console.log(Buffer.from(getResponseMessage.request))
 
         return new Buffer.from(getResponseMessage.request)
     }

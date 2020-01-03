@@ -43,10 +43,10 @@ class GetResponseMessage extends SnmpMessage {
         let objectIdentifier = this.objectIdentifier
         let snmpValue = this.snmpValue
         let varbind = [].concat(ComplexDataType.SEQUENCE,
-            objectIdentifier.length + snmpValue.length + 2,
+            objectIdentifier.length + snmpValue.length,
             objectIdentifier, snmpValue)
         let varbindList = [].concat(ComplexDataType.SEQUENCE,
-            varbind.length + 2, varbind)
+            varbind.length, varbind)
 
         return varbindList
     }
@@ -59,18 +59,19 @@ class GetResponseMessage extends SnmpMessage {
         return [PrimitiveDataType.INTEGER, 1, 0]
     }
 
-    get getRequestId() {
-        return [].concat(PrimitiveDataType.INTEGER, 
-            this.requestId.length, this.requestId)
+    get communityStringBytes() {
+        var communityStringBuffer = Buffer.from(this.communityString)
+        return [].concat(PrimitiveDataType.OCTETSTRING,
+            communityStringBuffer.length, ...communityStringBuffer);
     }
 
     get request() {
         let version = this.snmpVersion
-        let oid = this.objectIdentifier
+        let communityString = this.communityStringBytes
         let snmpPdu = this.snmpPdu
-        let requestLength = version.length + oid.length + snmpPdu.length
+        let requestLength = version.length + communityString.length + snmpPdu.length
         return [].concat(ComplexDataType.SEQUENCE, requestLength,
-            version, oid, snmpPdu) 
+            version, communityString, snmpPdu) 
     }
 
     get snmpPdu() {
@@ -79,17 +80,20 @@ class GetResponseMessage extends SnmpMessage {
         let error = this.error
         let requestId = this.requestId
         let snmpPduLength = varbindList.length + errorIndex.length + error.length + 
-            requestId.length + 2
+            requestId.length
         return [].concat(ComplexDataType.GETRESPONSE, snmpPduLength,
             requestId, error, errorIndex, varbindList)
     }
 
     get snmpVersion() {
-        return [this.version, 1, 0]
+        return [PrimitiveDataType.INTEGER, 1, this.version - 1]
     }
     
     GetOid() {
         return this.oid.encodedOid
+    }
+    toString() {
+        return this;
     }
 }
 
