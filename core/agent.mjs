@@ -1,12 +1,10 @@
 import { SnmpMessage } from '../messagingv2/snmp-message.mjs';
+import SnmpMessageResolver from '../messagingv2/snmp-message-resolver.mjs'
+import { GetResponseMessagev2 } from '../messagingv2/get-response-message.mjs'
 import { createSocket } from 'dgram';
-import { GetRequestMessage } from '../messaging/get-request-message.mjs';
-import { GetResponseMessage } from '../messaging/get-response-message.mjs';
-import { ObjectIdentifier } from '../messaging/object-identifier.mjs';
 import { Device } from './device.mjs';
-import { Tag } from './tag.mjs';
 
-class Agent {
+export default class Agent {
     constructor(deviceName, port){
         this.deviceName = deviceName;
         this.port = port;
@@ -23,7 +21,6 @@ class Agent {
         });
 
         this.server.on('message', (msg, rinfo) => {
-            var message = new SnmpMessage(msg);
             let getResponseMessage = this.processMessage(rinfo, msg);
             this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => { if(err === undefined) console.log(err) });
         });
@@ -37,6 +34,16 @@ class Agent {
     }
 
     processMessage(rinfo, binaryMessage) {        
+        let getRequestMessage = new SnmpMessage(binaryMessage);
+        let resolver = new SnmpMessageResolver(getRequestMessage)
+        let tag = this.device.tags.find(t => t.oid === resolver.oid.oidString)
+        
+        let responseMessage = new GetResponseMessagev2(getRequestMessage, tag.GetNextValue());
+
+        return responseMessage.responseBuffer;
+    }
+
+    processMessage_old(rinfo, binaryMessage) {        
         let getRequestMessage = new GetRequestMessage(rinfo.address, rinfo.port, binaryMessage);
         let tag = this.device.tags.find(t => t.oid === getRequestMessage.oid.oidString)
         
@@ -45,5 +52,3 @@ class Agent {
         return new Buffer.from(getResponseMessage.request)
     }
 }
-
-export { Agent };
