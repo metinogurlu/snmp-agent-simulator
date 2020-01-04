@@ -1,6 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const Tag = require('./tag').Tag
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { Tag } from './tag.mjs';
 class Device {
     constructor(deviceName)
     {
@@ -16,11 +17,13 @@ class Device {
     }
 
     GetDeviceConfig() {
-        let fileName = path.join(path.dirname(__dirname), "devices", `${this.deviceName}.json`);
-        return JSON.parse(fs.readFileSync(fileName))
+        const __filename = fileURLToPath(import.meta.url);
+        let fileName = join(dirname(__filename), "../", "devices", `${this.deviceName}.json`);
+        return JSON.parse(readFileSync(fileName))
     }
 }
-exports.Device = Device
+
+export { Device };
 
 
 // const fs = require('fs');
@@ -34,7 +37,7 @@ exports.Device = Device
         // this.deviceName = "exagate-pdu"
         // let fileName = `./../devices/${this.deviceName}.json`;
         // //let fileName = "/home/met/projects/snmp-agent-simulator/devices/exagate-pdu.json"
-        // let fileName2 = __dirname + "/test.json"
+        // let fileName2 = dirname + "/test.json"
         // console.log(fileName2)
         // this.device = fileSystem.readFileSync(fileName)
         // // fileSystem.readFile(fileName, 'utf8', (err, data) => {

@@ -1,15 +1,16 @@
-const dgram = require('dgram');
-const GetRequestMessage = require('../messaging/get-request-message.js').GetRequestMessage
-const GetResponseMessage = require('../messaging/get-response-message.js').GetResponseMessage
-const ObjectIdentifier = require('../messaging/object-identifier.js').ObjectIdentifier
-const Device = require('./device').Device
-const Tag = require('./tag').Tag
+import { SnmpMessage } from '../messagingv2/snmp-message.mjs';
+import { createSocket } from 'dgram';
+import { GetRequestMessage } from '../messaging/get-request-message.mjs';
+import { GetResponseMessage } from '../messaging/get-response-message.mjs';
+import { ObjectIdentifier } from '../messaging/object-identifier.mjs';
+import { Device } from './device.mjs';
+import { Tag } from './tag.mjs';
 
 class Agent {
     constructor(deviceName, port){
         this.deviceName = deviceName;
         this.port = port;
-        this.server = dgram.createSocket('udp4')
+        this.server = createSocket('udp4')
         this.setServerEvents();
         this.device = new Device(deviceName)
     }
@@ -22,6 +23,7 @@ class Agent {
         });
 
         this.server.on('message', (msg, rinfo) => {
+            var message = new SnmpMessage(msg);
             let getResponseMessage = this.processMessage(rinfo, msg);
             this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => { if(err === undefined) console.log(err) });
         });
@@ -44,4 +46,4 @@ class Agent {
     }
 }
 
-exports.Agent = Agent;
+export { Agent };

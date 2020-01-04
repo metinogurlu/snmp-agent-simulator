@@ -68,4 +68,4 @@ class Tag {
     }
 }
 
-exports.Tag = Tag
+export { Tag }
