@@ -1,6 +1,6 @@
-import { SnmpMessage } from '../messagingv2/snmp-message.mjs';
-import SnmpMessageResolver from '../messagingv2/snmp-message-resolver.mjs'
-import { GetResponseMessagev2 } from '../messagingv2/get-response-message.mjs'
+import { SnmpMessage } from '../messaging/snmp-message.mjs';
+import SnmpMessageResolver from '../messaging/snmp-message-resolver.mjs'
+import { GetResponseMessage } from '../messaging/get-response-message.mjs'
 import { createSocket } from 'dgram';
 import { Device } from './device.mjs';
 
@@ -21,8 +21,9 @@ export default class Agent {
         });
 
         this.server.on('message', (msg, rinfo) => {
-            let getResponseMessage = this.processMessage(rinfo, msg);
-            this.server.send(getResponseMessage, rinfo.port, rinfo.address, (err, errbytes) => { if(err === undefined) console.log(err) });
+            let getResponseMessage = this.getResponseMessage(rinfo, msg);
+            this.server.send(getResponseMessage.responseBuffer, rinfo.port, rinfo.address, (err, errbytes) => { if(err === undefined) console.log(err) });
+            console.log(this.getResponseString(rinfo, getResponseMessage))
         });
 
         this.server.on('listening', () => {
@@ -33,14 +34,30 @@ export default class Agent {
         this.server.bind(this.port);
     }
 
-    processMessage(rinfo, binaryMessage) {        
+    getResponseMessage(rinfo, binaryMessage) {        
         let getRequestMessage = new SnmpMessage(binaryMessage);
         let resolver = new SnmpMessageResolver(getRequestMessage)
-        let tag = this.device.tags.find(t => t.oid === resolver.oid.oidString)
+        let oidValueMap = new Map();
         
-        let responseMessage = new GetResponseMessagev2(getRequestMessage, tag.GetNextValue());
+        resolver.oids.forEach(oid => {
+            let valueOfOid = this.device.tags.find(t => t.oid === oid.oidString).GetNextValue();
+            oidValueMap.set(oid, valueOfOid)
+        });
 
-        return responseMessage.responseBuffer;
+        return new GetResponseMessage(getRequestMessage, oidValueMap);
+    }
+
+    getResponseString(rinfo, responseMessage) {
+        let oidValues = [...responseMessage.oidValueMap.entries()]
+            .map(item => ({ oid: item[0].oidString, value: item[1]}));
+        let responseJson = {
+            deviceName: this.deviceName,
+            port: this.port,
+            ip: rinfo.address,
+            response: oidValues
+        }
+
+        return responseJson;
     }
 
     processMessage_old(rinfo, binaryMessage) {        

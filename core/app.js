@@ -1,2 +1,2 @@
 require = require("esm")(module/*, options*/)
-module.exports = require("./app.mjs")
+module.exports = require("./simulator.mjs")

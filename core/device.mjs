@@ -24,31 +24,3 @@ class Device {
 }
 
 export { Device };
-
-
-// const fs = require('fs');
-// fs.readFile("/home/met/projects/snmp-agent-simulator/devices/exagate-pdu.json", 'utf8', (err, data) => {
-//     if(err)
-//         throw err;
-//     console.log(JSON.parse(data));
-// });
-        // let fileSystem = require('fs');
-        // this.device;
-        // this.deviceName = "exagate-pdu"
-        // let fileName = `./../devices/${this.deviceName}.json`;
-        // //let fileName = "/home/met/projects/snmp-agent-simulator/devices/exagate-pdu.json"
-        // let fileName2 = dirname + "/test.json"
-        // console.log(fileName2)
-        // this.device = fileSystem.readFileSync(fileName)
-        // // fileSystem.readFile(fileName, 'utf8', (err, data) => {
-        // //     if(err)
-        // //         throw err;
-        // //         this.device = JSON.parse(data);
-        // // });
-        // console.log(this.device)
-
-// var path = require('path');
-// console.log(path.resolve("../devices", "exagate-pdu.json"))
-// console.log(path.dirname('../devices/exagate-pdu.json'));
-// console.log(path.relative('../devices/exagate-pdu.json'));
-// console.log(path.posix.basename('../devices/exagate-pdu.json'));
