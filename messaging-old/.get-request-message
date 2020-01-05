@@ -1,9 +1,7 @@
-const RawMessage = require("./raw-message").RawMessage
-const SnmpMessage = require('./snmp-message').SnmpMessage
-const ObjectIdentifier = require('./object-identifier').ObjectIdentifier
-let constants = require('./constants')
-
-let MessagePart = constants.MessagePart;
+import { RawMessage } from "./raw-message.mjs";
+import { SnmpMessage } from './snmp-message.mjs';
+import { ObjectIdentifier } from './object-identifier.mjs';
+import { MessagePart } from './constants.mjs';
 
 class GetRequestMessage extends SnmpMessage {
 
@@ -57,4 +55,4 @@ class GetRequestMessage extends SnmpMessage {
   }
 }
 
-exports.GetRequestMessage = GetRequestMessage;
+export { GetRequestMessage };

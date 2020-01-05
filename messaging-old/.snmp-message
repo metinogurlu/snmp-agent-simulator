@@ -10,4 +10,4 @@ class SnmpMessage {
     }
 }
 
-exports.SnmpMessage = SnmpMessage
+export { SnmpMessage }
