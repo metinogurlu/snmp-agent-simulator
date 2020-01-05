@@ -15,7 +15,10 @@
   ],
   "author": "metinogurlu",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "bl": "^4.0.0",
+    "esm": "^3.2.25"
+  },
   "devDependencies": {
     "mocha": "^6.2.0"
   }

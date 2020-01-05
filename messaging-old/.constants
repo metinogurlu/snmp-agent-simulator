@@ -40,6 +40,4 @@ const MessagePart = {
     ENDOFMIBVIEW: 0x82
   }
 
-  exports.MessagePart = MessagePart
-  exports.ComplexDataType = ComplexDataType
-  exports.PrimitiveDataType = PrimitiveDataType
+  export {MessagePart, ComplexDataType, PrimitiveDataType}

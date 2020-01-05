@@ -1,5 +1,4 @@
-
-class ObjectIdentifier {
+export default class ObjectIdentifier {
     constructor(oid) {
         if(typeof(oid) === "string") {
             this.oidString = oid
@@ -65,5 +64,3 @@ class ObjectIdentifier {
             return result;
     }
 }
-
-exports.ObjectIdentifier = ObjectIdentifier

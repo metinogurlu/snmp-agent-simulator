@@ -1,8 +1,6 @@
-const SnmpMessage = require('./snmp-message').SnmpMessage
-const Constants = require('./constants')
+import { SnmpMessage } from './snmp-message.mjs'
+import { PrimitiveDataType, ComplexDataType } from './constants.mjs'
 
-const PrimitiveDataType = Constants.PrimitiveDataType
-const ComplexDataType = Constants.ComplexDataType
 
 class GetResponseMessage extends SnmpMessage {
     constructor(requestMessage, value, dataType) {
@@ -98,4 +96,4 @@ class GetResponseMessage extends SnmpMessage {
 }
 
 
-exports.GetResponseMessage = GetResponseMessage
+export { GetResponseMessage }

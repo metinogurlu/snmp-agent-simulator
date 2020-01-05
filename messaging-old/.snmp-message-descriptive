@@ -65,5 +65,4 @@ class SnmpMessageDescriptive {
     }
 }
 
-exports.SnmpMessageDescriptive = SnmpMessageDescriptive;
-
+export { SnmpMessageDescriptive }

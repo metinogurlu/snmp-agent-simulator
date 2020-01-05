@@ -1,5 +1,4 @@
-let constants = require('./constants')
-let MessagePart = constants.MessagePart;
+import { MessagePart } from './constants.mjs'
 class RawMessage {
     constructor(message) {
         this.createRawMessage(message);
@@ -20,4 +19,4 @@ class RawMessage {
     }
 }
 
-exports.RawMessage = RawMessage;
+export { RawMessage }
