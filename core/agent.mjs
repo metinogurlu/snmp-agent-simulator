@@ -13,6 +13,8 @@ export default class Agent {
         this.device = new Device(deviceName)
     }
 
+
+
     setServerEvents() {
 
         this.server.on('error', (err) => {
@@ -31,8 +33,9 @@ export default class Agent {
             console.log(`server listening ${address.address}:${address.port}`);
         });
 
-        this.server.bind(this.port);
+        this.server.bind(this.port, process.env.hostIp);
     }
+    
 
     getResponseMessage(rinfo, binaryMessage) {        
         let getRequestMessage = new SnmpMessage(binaryMessage);
@@ -58,14 +61,5 @@ export default class Agent {
         }
 
         return responseJson;
-    }
-
-    processMessage_old(rinfo, binaryMessage) {        
-        let getRequestMessage = new GetRequestMessage(rinfo.address, rinfo.port, binaryMessage);
-        let tag = this.device.tags.find(t => t.oid === getRequestMessage.oid.oidString)
-        
-        let getResponseMessage = new GetResponseMessage(getRequestMessage, tag.GetNextValue());
-
-        return new Buffer.from(getResponseMessage.request)
     }
 }

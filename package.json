@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "bl": "^4.0.0",
+    "docker-host-ip": "^1.0.1",
     "esm": "^3.2.25"
   },
   "devDependencies": {

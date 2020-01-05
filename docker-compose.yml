@@ -2,11 +2,12 @@ version: '3.4'
 
 services:
   snmp-agent-simulator:
+    container_name: snmp-agent-simulator
     build:
       context: /mnt/d/github/snmp-agent-simulator/
       dockerfile: Dockerfile
     ports:
-      - '40000-40100:40000-40100/udp'   
+      - '40000-50000:40000-50000/udp'   
     networks:
       - smartpack4
 
