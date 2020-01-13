@@ -1,0 +1,581 @@
+{
+    "name": "exagate-trifaze-inline",
+    "oids": [
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.4",
+            "name": "L1_A(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.13",
+            "name": "L2_A(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.22",
+            "name": "L3_A(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.36",
+            "name": "L1_B(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.45",
+            "name": "L2_B(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.54",
+            "name": "L3_B(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.5",
+            "name": "L1_A(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.14",
+            "name": "L2_A(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.23",
+            "name": "L3_A(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.37",
+            "name": "L1_B(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.46",
+            "name": "L2_B(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.55",
+            "name": "L3_B(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.8",
+            "name": "L1_A(Yuk)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.17",
+            "name": "L2_A(Yuk)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.26",
+            "name": "L3_A(Yuk)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.40",
+            "name": "L1_B(Yuk)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.49",
+            "name": "L2_B(Yuk)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.58",
+            "name": "L3_B(Yuk)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.29",
+            "name": "Total_A(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.30",
+            "name": "Total_A(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.31",
+            "name": "Total_A(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.27",
+            "name": "Total_A(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.28",
+            "name": "Total_A(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.61",
+            "name": "Total_B(Aktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.62",
+            "name": "Total_B(Gorunur Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.63",
+            "name": "Total_B(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.59",
+            "name": "Total_B(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.60",
+            "name": "Total_B(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.6",
+            "name": "L1_A(Frekans)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.7",
+            "name": "L1_A(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.16",
+            "name": "L2_A(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.25",
+            "name": "L3_A(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.39",
+            "name": "L1_B(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.15",
+            "name": "L2_A(Frekans)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.24",
+            "name": "L3_A(Frekans)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.38",
+            "name": "L1_B(Frekans)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.47",
+            "name": "L2_B(Frekans)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.3",
+            "name": "L1_A(Guc Faktoru)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.12",
+            "name": "L2_A(Guc Faktoru)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.21",
+            "name": "L3_A(Guc Faktoru)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.35",
+            "name": "L1_B(Guc Faktoru)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.44",
+            "name": "L2_B(Guc Faktoru)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.1",
+            "name": "L1_A(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 10,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.0",
+            "name": "L1_A(Voltaj)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 10,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.9",
+            "name": "L2_A(Voltaj)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 10,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.18",
+            "name": "L3_A(Voltaj)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 10,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.32",
+            "name": "L1_B(Voltaj)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.10",
+            "name": "L2_A(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.19",
+            "name": "L3_A(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 100,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.56",
+            "name": "L3_B(Frekans)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.53",
+            "name": "L3_B(Guc Faktoru)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 10,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.41",
+            "name": "L2_B_B(Voltaj)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 10,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.50",
+            "name": "L3_B_B(Voltaj)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.48",
+            "name": "L2_B(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.57",
+            "name": "L3_B(Reaktif Guc)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.33",
+            "name": "L1_B(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.42",
+            "name": "L2_B(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.51",
+            "name": "L3_B_B(Akim)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.2",
+            "name": "L1_A(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.11",
+            "name": "L2_A(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.20",
+            "name": "L3_A(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.34",
+            "name": "L1_B(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.43",
+            "name": "L2_B(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        },
+        {
+            "multiplier": 1000000,
+            "oid": "1.3.6.1.4.1.35483.1.1.1.3.1.1.4.52",
+            "name": "L3_B(Enerji)",
+            "valueMin" : 0,
+            "valueMax": 30,
+            "changeFactor" : 0.03,
+            "alarmFactor" : 0.05
+        }
+    ]
+}

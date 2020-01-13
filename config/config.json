@@ -1,7 +1,7 @@
 {
     "devices": [
         {
-            "name":"exagate-pdu",
+            "name":"exagate-trifaze-inline",
             "port":"40000-40100"
         },
         {
