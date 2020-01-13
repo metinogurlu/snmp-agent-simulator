@@ -3,6 +3,7 @@ import { join, dirname } from 'path';
 import { readFileSync } from 'fs';
 import Agent from './agent.mjs';
 import dockerHostIp from 'docker-host-ip';
+import ObjectIdentifier from '../messaging/object-identifier'
 
 class SnmpSimulatorApp {
     constructor() {
@@ -49,5 +50,6 @@ class SnmpSimulatorApp {
         });
     }
 }
+
 const app = new SnmpSimulatorApp();
 setTimeout(function(){ app.run(); }, 2000);

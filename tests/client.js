@@ -7,4 +7,3 @@ describe('Basic Mocha String Test', function () {
         assert.equal("Hello".charAt(0), 'H');
     });
 });
-

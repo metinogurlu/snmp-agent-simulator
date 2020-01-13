@@ -13,8 +13,6 @@ export default class Agent {
         this.device = new Device(deviceName)
     }
 
-
-
     setServerEvents() {
 
         this.server.on('error', (err) => {
@@ -26,6 +24,7 @@ export default class Agent {
             let getResponseMessage = this.getResponseMessage(rinfo, msg);
             this.server.send(getResponseMessage.responseBuffer, rinfo.port, rinfo.address, (err, errbytes) => { if(err === undefined) console.log(err) });
             console.log(this.getResponseString(rinfo, getResponseMessage))
+            // console.log([...getResponseMessage.responseBuffer].map(item => item.toString(16)).join(' '));
         });
 
         this.server.on('listening', () => {

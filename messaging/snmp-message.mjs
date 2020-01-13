@@ -1,15 +1,22 @@
 import SnmpMessagePart from "./snmp-message-part.mjs";
 import { MessagePart, MessagePartBytes } from "../messaging/constants.mjs";
+import { MessageUtil } from "./message-util.mjs"
 
 class SnmpMessage extends SnmpMessagePart {
     constructor(messageBuffer) {
         if ((typeof (messageBuffer) === 'undefined') || (messageBuffer === null))
             throw new Error("messageBuffer is null or undefined");
 
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH]);
+        //console.log("Request: " + [...messageBuffer].map(item => item.toString(16)).join(' '));
 
+        super(null, null)
+            
         this.messageBuffer = messageBuffer;
         this.splittedBufferByMessagePart = this.getSplittedBuffer();
+
+        this.setType = this.splittedBufferByMessagePart.get(MessagePart.MESSAGE)[0]
+        this.setLength = this.splittedBufferByMessagePart.get(MessagePart.MESSAGE)
+            .slice([MessagePartBytes.LENGTH]);
 
         this.SnmpVersion = new SnmpVersion(
             this.splittedBufferByMessagePart.get(MessagePart.VERSION));
@@ -40,6 +47,7 @@ class SnmpMessage extends SnmpMessagePart {
         }
     }
 
+
     getSplittedBuffer() {
 
         let lastValueInMap = (map, lastState) => {
@@ -51,14 +59,19 @@ class SnmpMessage extends SnmpMessagePart {
 
         let getNextIndex = (map, lastState) => {
             let nextStartIndex = 0;
-            const ignoredMessageParts = [MessagePart.PDU, MessagePart.VARBINDLIST, MessagePart.VARBIND];
+            let length = 0;
+            const ignoredMessageParts = [MessagePart.MESSAGE, MessagePart.PDU, MessagePart.VARBINDLIST, MessagePart.VARBIND];
             const [lastMesagePart, lastStartIndex] = lastValueInMap(map, lastState);
+            let lengtIndexhOfCurrentPart = lastStartIndex + 1;
             if(ignoredMessageParts.includes(lastMesagePart))
-                nextStartIndex = lastStartIndex + 2;
+                length = (this.messageBuffer[lengtIndexhOfCurrentPart] > 0x80 ?
+                    this.messageBuffer[lengtIndexhOfCurrentPart] % 0x80 : 0) + 1;
             else {
-                var lengtIndexhOfCurrentPart = lastStartIndex + 1;
-                nextStartIndex = lastStartIndex + this.messageBuffer[lengtIndexhOfCurrentPart] + 2;
+                length = (this.messageBuffer[lengtIndexhOfCurrentPart] > 0x80 ?
+                    lengtIndexhOfCurrentPart + this.messageBuffer[lengtIndexhOfCurrentPart] % 0x80 : 
+                    this.messageBuffer[lengtIndexhOfCurrentPart]) + 1;
             }
+            nextStartIndex = lengtIndexhOfCurrentPart + length;
             return nextStartIndex;
         }
 
@@ -84,14 +97,16 @@ class SnmpMessage extends SnmpMessagePart {
         }
 
         let anyMoreVarbind = (map) => {
-            return !(getNextIndex(map, MessagePart.VALUE) == this.messageBuffer.length);
+            return getNextIndex(map, MessagePart.VALUE) < this.messageBuffer.length;
         }
 
         let getMessagePartIndexes = () => {
             let messagePartIndexMap = new Map()
             messagePartIndexMap.set(MessagePart.MESSAGE, 0);
-            messagePartIndexMap.set(MessagePart.VERSION, 2);
-            messagePartIndexMap.set(MessagePart.COMMUNITYSTRING, 5);
+            messagePartIndexMap.set(MessagePart.VERSION, 
+                getNextIndex(messagePartIndexMap, MessagePart.MESSAGE));
+            messagePartIndexMap.set(MessagePart.COMMUNITYSTRING, 
+                getNextIndex(messagePartIndexMap, MessagePart.VERSION));
             messagePartIndexMap.set(MessagePart.PDU, 
                 getNextIndex(messagePartIndexMap, MessagePart.COMMUNITYSTRING));
             messagePartIndexMap.set(MessagePart.REQUESTID, 
@@ -200,65 +215,79 @@ class SnmpMessage extends SnmpMessagePart {
 
         return getBuffer();
     }
+
+    get variableCount() {
+        return this.ObjectIdentifier.length;
+    }
 }
 
 class SnmpVersion extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class CommunityString extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class SnmpPdu extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class RequestId extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class Error extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class ErrorIndex extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class VarbindList extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class Varbind extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class ObjectIdentifier extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 
 class SnmpValue extends SnmpMessagePart {
     constructor(messageBuffer) {
-        super(messageBuffer[MessagePartBytes.TYPE], messageBuffer[MessagePartBytes.LENGTH], messageBuffer.slice(MessagePartBytes.VALUE));
+        let seperatedBuffer = MessageUtil.seperateMessagePartBuffer(messageBuffer)
+        super(seperatedBuffer.type, seperatedBuffer.length, seperatedBuffer.value)
     }
 }
 const _SnmpValue = SnmpValue

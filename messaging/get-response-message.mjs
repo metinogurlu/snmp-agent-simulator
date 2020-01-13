@@ -4,14 +4,15 @@ import { ComplexDataType } from './constants.mjs';
 import SnmpMessageResolver from './snmp-message-resolver.mjs'
 class GetResponseMessage {
     constructor(requestMessage, oidValueMap) {
-        this.message = requestMessage
+        this.requestMessage = requestMessage;
+        this.responseMessage = requestMessage;
         this.oidValueMap = oidValueMap;
         this.changeResponseType();
         this.prepareSnmpValue();
     }
 
     changeResponseType() {
-        this.message.SnmpPdu.setType = ComplexDataType.GETRESPONSE;
+        this.responseMessage.SnmpPdu.setType = ComplexDataType.GETRESPONSE;
     }
     prepareSnmpValue() {
         let entrieIterator = this.oidValueMap.entries();
@@ -42,10 +43,10 @@ class GetResponseMessage {
             let returnType = PrimitiveDataType.COUNTER64
             let length = returnValue.length
 
-            let resolver = new SnmpMessageResolver(this.message);
+            let resolver = new SnmpMessageResolver(this.responseMessage);
             
             let oidIndex = resolver.oids.map(o => o.oidString).indexOf(oid.oidString)
-            this.message.SnmpValue[oidIndex] = new SnmpValue(Buffer.from([returnType, length].concat(returnValue)));
+            this.responseMessage.SnmpValue[oidIndex] = new SnmpValue(Buffer.from([returnType, length].concat(returnValue)));
         }
         
 
@@ -54,27 +55,56 @@ class GetResponseMessage {
 
     reCalculateResponse() {
         let bufferArray = [];
-        let totalLength = 0;
-        bufferArray.push(this.message.asBuffer);
-        bufferArray.push(this.message.SnmpVersion.asBuffer);
-        bufferArray.push(this.message.CommunityString.asBuffer);
-        bufferArray.push(this.message.SnmpPdu.asBuffer);
-        bufferArray.push(this.message.RequestId.asBuffer);
-        bufferArray.push(this.message.Error.asBuffer);
-        bufferArray.push(this.message.ErrorIndex.asBuffer);
-        bufferArray.push(this.message.VarbindList.asBuffer);
+        let totalLength = 0; 
         
-        var variableCount = this.message.Varbind.length;
+        var variableCount = this.responseMessage.variableCount;
+        let varbindListLength = 0; let varbindLength = 0; let oidLength = 0; let valueLength = 0;
+        let snmpPduLength = 0; let messageLength = 0;
+        //varbind
+        for (let i = 0; i < variableCount; i++) {
+            oidLength = this.responseMessage.ObjectIdentifier[i].bufferLength;
+            valueLength = this.responseMessage.SnmpValue[i].bufferLength;            
+            varbindLength = oidLength + valueLength
+
+            this.responseMessage.Varbind[i].setLength = varbindLength;
+            varbindListLength += varbindLength + this.responseMessage.Varbind[i].bufferLength;
+        } 
+
+        this.responseMessage.VarbindList.setLength = varbindListLength;
+        varbindLength += this.responseMessage.VarbindList.bufferLength;
+
+        snmpPduLength = varbindListLength +
+            this.responseMessage.ErrorIndex.bufferLength + 
+            this.responseMessage.Error.bufferLength + 
+            this.responseMessage.RequestId.bufferLength + 
+            this.responseMessage.SnmpPdu.bufferLength;
+
+        this.responseMessage.SnmpPdu.setLength = snmpPduLength;
+        snmpPduLength += this.responseMessage.SnmpPdu.bufferLength;
+
+        this.responseMessage.setLength = this.responseMessage.SnmpVersion.bufferLength + 
+            this.responseMessage.CommunityString.bufferLength +
+            snmpPduLength;
+        
+        bufferArray.push(this.responseMessage.getBuffer);
+        bufferArray.push(this.responseMessage.SnmpVersion.getBuffer);
+        bufferArray.push(this.responseMessage.CommunityString.getBuffer);
+        bufferArray.push(this.responseMessage.SnmpPdu.getBuffer);
+        bufferArray.push(this.responseMessage.RequestId.getBuffer);
+        bufferArray.push(this.responseMessage.Error.getBuffer);
+        bufferArray.push(this.responseMessage.ErrorIndex.getBuffer);
+        bufferArray.push(this.responseMessage.VarbindList.getBuffer);
         
         for (let i = 0; i < variableCount; i++) {
-            bufferArray.push(this.message.Varbind[i].asBuffer);
-            bufferArray.push(this.message.ObjectIdentifier[i].asBuffer);
-            bufferArray.push(this.message.SnmpValue[i].asBuffer);
+            bufferArray.push(this.responseMessage.Varbind[i].getBuffer);
+            bufferArray.push(this.responseMessage.ObjectIdentifier[i].getBuffer);
+            bufferArray.push(this.responseMessage.SnmpValue[i].getBuffer);
         }
         bufferArray.map(buff => totalLength += buff.length)
         this.responseBuffer = Buffer.concat(bufferArray, totalLength)
     }
     get responseMessageBuffer() {
+        this.reCalculateResponse();
         return this.responseBuffer;
     }
 }
