@@ -3,6 +3,7 @@ import { SnmpMessage } from '../messaging/snmp-message';
 import SnmpMessageResolver from '../messaging/snmp-message-resolver';
 import { GetResponseMessage } from '../messaging/get-response-message';
 import { Device } from './device';
+import { PrimitiveDataType } from '../messaging/constants'
 
 export default class Agent {
   constructor(deviceName, port) {
@@ -21,9 +22,16 @@ export default class Agent {
 
     this.server.on('message', (msg, rinfo) => {
       const getResponseMessage = this.getResponseMessage(rinfo, msg);
-      this.server.send(getResponseMessage.responseBuffer, rinfo.port, rinfo.address, (err, errbytes) => { if (err === undefined) console.log(err); });
-      console.log(this.getResponseString(rinfo, getResponseMessage))
-      // console.log([...getResponseMessage.responseBuffer].map(item => item.toString(16)).join(' '));
+
+      this.server.send(getResponseMessage.responseBuffer, rinfo.port, rinfo.address, (err) => {
+        if (err === undefined) {
+          console.log(err);
+        }
+      });
+
+      console.log(this.getResponseString(rinfo, getResponseMessage));
+      console.log([...getResponseMessage.responseBuffer].map(
+        (item) => item.toString(16)).join(' '));
     });
 
     this.server.on('listening', () => {
@@ -36,12 +44,16 @@ export default class Agent {
 
   getResponseMessage(rinfo, binaryMessage) {
     const getRequestMessage = new SnmpMessage(binaryMessage);
-    const resolver = new SnmpMessageResolver(getRequestMessage)
+    const resolver = new SnmpMessageResolver(getRequestMessage);
     const oidValueMap = new Map();
 
     resolver.oids.forEach((oid) => {
-      const valueOfOid = this.device.tags.find((t) => t.oid === oid.oidString).GetNextValue();
-      oidValueMap.set(oid, valueOfOid);
+      if (this.device.tags.some((t) => t.oid === oid.oidString)) {
+        const valueOfOid = this.device.tags.find((t) => t.oid === oid.oidString).GetNextValue();
+        oidValueMap.set(oid, valueOfOid);
+      } else {
+        oidValueMap.set(oid, null);
+      }
     });
 
     return new GetResponseMessage(getRequestMessage, oidValueMap);
