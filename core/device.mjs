@@ -2,6 +2,7 @@ import { fileURLToPath } from 'url';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { Tag } from './tag.mjs';
+
 class Device {
     constructor(deviceName)
     {
@@ -23,4 +24,4 @@ class Device {
     }
 }
 
-export { Device };
+export { Device }

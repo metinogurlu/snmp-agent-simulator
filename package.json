@@ -4,6 +4,8 @@
   "description": "snmp agent simulator for simulate number of snmp devices on network",
   "main": "/core/app.js",
   "scripts": {
+    "lint": "eslint .",
+    "start": "nodemon ./core/app.js",
     "test": "mocha ./tests/client.js"
   },
   "repository": {
@@ -17,10 +19,29 @@
   "license": "ISC",
   "dependencies": {
     "bl": "^4.0.0",
+    "body-parser": "^1.19.0",
     "docker-host-ip": "^1.0.1",
-    "esm": "^3.2.25"
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.7",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
     "mocha": "^6.2.0"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
+    "delay": "1000",
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": 34380
+    }
   }
 }
