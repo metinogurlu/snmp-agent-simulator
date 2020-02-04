@@ -1,5 +1,7 @@
 {
     "name": "exagate-trifaze-inline",
+    "disconnectAfterEachRequest": 0,
+    "maxDisconnectedDurationInMinute": 2,
     "oids": [
         {
             "multiplier": 1000,
