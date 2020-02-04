@@ -7,11 +7,11 @@ class Device {
     constructor(deviceName)
     {
         this.deviceName = deviceName
-        
-        //TODO: boş tag ataması hatalı sonuçlanabilir, ihtiyaç kalmadığında değiştir.
-        this.tags = [new Tag()]
-        this.tags.pop()
+        this.tags = []
         let config = this.GetDeviceConfig();
+        this.disconnectAfterEachRequest = config.disconnectAfterEachRequest;
+        this.maxDisconnectedDurationInMinute = config.maxDisconnectedDurationInMinute;
+        this.isDisconnected = false;
         for (let i = 0; i < config.oids.length; i++) {
             this.tags.push(new Tag(config.oids[i]));
         }

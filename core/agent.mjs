@@ -3,7 +3,6 @@ import { SnmpMessage } from '../messaging/snmp-message';
 import SnmpMessageResolver from '../messaging/snmp-message-resolver';
 import { GetResponseMessage } from '../messaging/get-response-message';
 import { Device } from './device';
-import { PrimitiveDataType } from '../messaging/constants'
 
 export default class Agent {
   constructor(deviceName, port) {
@@ -12,6 +11,7 @@ export default class Agent {
     this.server = createSocket('udp4');
     this.setServerEvents();
     this.device = new Device(deviceName);
+    this.readCount = 0;
   }
 
   setServerEvents() {
@@ -21,17 +21,31 @@ export default class Agent {
     });
 
     this.server.on('message', (msg, rinfo) => {
-      const getResponseMessage = this.getResponseMessage(rinfo, msg);
+      if (this.device.isDisconnected) {
+        return;
+      }
 
-      this.server.send(getResponseMessage.responseBuffer, rinfo.port, rinfo.address, (err) => {
-        if (err === undefined) {
-          console.log(err);
-        }
-      });
+      if (this.isDisconnectNeed()) {
+        this.device.isDisconnected = true;
+        setTimeout(() => {
+          this.device.isDisconnected = false;
+        }, this.getRandomValue(0, this.device.maxDisconnectedDurationInMinute) * 60000);
+      }
+
+      this.readCount += 1;
+
+      const getResponseMessage = this.getResponseMessage(rinfo, msg);
+      setTimeout(() => {
+        this.server.send(getResponseMessage.responseBuffer, rinfo.port, rinfo.address, (err) => {
+          if (err === undefined) {
+            console.log(err);
+          }
+        });
+      }, this.getRandomValue(0, 250));
 
       console.log(this.getResponseString(rinfo, getResponseMessage));
-      console.log([...getResponseMessage.responseBuffer].map(
-        (item) => item.toString(16)).join(' '));
+      console.log([...getResponseMessage.responseBuffer]
+        .map((item) => item.toString(16)).join(' '));
     });
 
     this.server.on('listening', () => {
@@ -40,6 +54,15 @@ export default class Agent {
     });
 
     this.server.bind(this.port, process.env.hostIp);
+  }
+
+  isDisconnectNeed() {
+    return (this.readCount > 0 && this.device.disconnectAfterEachRequest > 0
+      && this.readCount % this.device.disconnectAfterEachRequest === 0);
+  }
+
+  getRandomValue(min, max) {
+    return Math.random() * (max - min) + min;
   }
 
   getResponseMessage(rinfo, binaryMessage) {
@@ -60,14 +83,14 @@ export default class Agent {
   }
 
   getResponseString(rinfo, responseMessage) {
-    let oidValues = [...responseMessage.oidValueMap.entries()]
-      .map(item => ({ oid: item[0].oidString, value: item[1]}));
-    let responseJson = {
+    const oidValues = [...responseMessage.oidValueMap.entries()]
+      .map((item) => ({ oid: item[0].oidString, value: item[1] }));
+    const responseJson = {
       deviceName: this.deviceName,
       port: this.port,
       ip: rinfo.address,
-      response: oidValues
-    }
+      response: oidValues,
+    };
 
     return responseJson;
   }
