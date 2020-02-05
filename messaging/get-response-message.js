@@ -2,7 +2,7 @@ import { SnmpValue } from './snmp-message';
 import { PrimitiveDataType, ComplexDataType } from './constants';
 import SnmpMessageResolver from './snmp-message-resolver';
 
-class GetResponseMessage {
+export default class GetResponseMessage {
   constructor(requestMessage, oidValueMap) {
     this.requestMessage = requestMessage;
     this.responseMessage = requestMessage;
@@ -18,6 +18,7 @@ class GetResponseMessage {
   prepareSnmpValue() {
     const entrieIterator = this.oidValueMap.entries();
 
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       const oidValueItem = entrieIterator.next();
 
@@ -40,7 +41,7 @@ class GetResponseMessage {
       }
       const valueArr = [];
 
-      if(oidValueItem.value[1] !== null) {
+      if (oidValueItem.value[1] !== null) {
         for (let index = 0; index <= valueStr.length - 2; index += 2) {
           valueArr.push(parseInt(valueStr.slice(index, index + 2), 16));
         }
@@ -69,9 +70,9 @@ class GetResponseMessage {
 
     const { variableCount } = this.responseMessage;
     let varbindListLength = 0; let varbindLength = 0; let oidLength = 0; let valueLength = 0;
-    let snmpPduLength = 0; const messageLength = 0;
+    let snmpPduLength = 0;
     // varbind
-    for (let i = 0; i < variableCount; i++) {
+    for (let i = 0; i < variableCount; i += 1) {
       oidLength = this.responseMessage.ObjectIdentifier[i].bufferLength;
       valueLength = this.responseMessage.SnmpValue[i].bufferLength;
       varbindLength = oidLength + valueLength;
@@ -105,11 +106,12 @@ class GetResponseMessage {
     bufferArray.push(this.responseMessage.ErrorIndex.getBuffer);
     bufferArray.push(this.responseMessage.VarbindList.getBuffer);
 
-    for (let i = 0; i < variableCount; i++) {
+    for (let i = 0; i < variableCount; i += 1) {
       bufferArray.push(this.responseMessage.Varbind[i].getBuffer);
       bufferArray.push(this.responseMessage.ObjectIdentifier[i].getBuffer);
       bufferArray.push(this.responseMessage.SnmpValue[i].getBuffer);
     }
+    // eslint-disable-next-line no-return-assign
     bufferArray.map((buff) => totalLength += buff.length);
     this.responseBuffer = Buffer.concat(bufferArray, totalLength);
   }
@@ -119,5 +121,3 @@ class GetResponseMessage {
     return this.responseBuffer;
   }
 }
-
-export { GetResponseMessage };

@@ -1,11 +1,12 @@
 {
   "name": "snmp-agent-simulator",
+  "type": "module",
   "version": "1.0.0",
   "description": "snmp agent simulator for simulate number of snmp devices on network",
   "main": "/core/app.js",
   "scripts": {
     "lint": "eslint .",
-    "start": "nodemon ./core/app.js",
+    "start": "nodemon --no-warnings --experimental-modules --es-module-specifier-resolution=node ./core/app.js",
     "test": "mocha ./tests/client.js"
   },
   "repository": {
