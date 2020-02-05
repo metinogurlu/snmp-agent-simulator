@@ -1,8 +1,8 @@
 import { createSocket } from 'dgram';
 import { SnmpMessage } from '../messaging/snmp-message';
 import SnmpMessageResolver from '../messaging/snmp-message-resolver';
-import { GetResponseMessage } from '../messaging/get-response-message';
-import { Device } from './device';
+import GetResponseMessage from '../messaging/get-response-message';
+import Device from './device';
 
 export default class Agent {
   constructor(deviceName, port) {
@@ -29,7 +29,7 @@ export default class Agent {
         this.device.isDisconnected = true;
         setTimeout(() => {
           this.device.isDisconnected = false;
-        }, this.getRandomValue(0, this.device.maxDisconnectedDurationInMinute) * 60000);
+        }, Agent.getRandomValue(0, this.device.maxDisconnectedDurationInMinute) * 60000);
       }
 
       this.readCount += 1;
@@ -41,7 +41,7 @@ export default class Agent {
             console.log(err);
           }
         });
-      }, this.getRandomValue(0, 250));
+      }, Agent.getRandomValue(0, 250));
 
       console.log(this.getResponseString(rinfo, getResponseMessage));
       console.log([...getResponseMessage.responseBuffer]
@@ -61,7 +61,7 @@ export default class Agent {
       && this.readCount % this.device.disconnectAfterEachRequest === 0);
   }
 
-  getRandomValue(min, max) {
+  static getRandomValue(min, max) {
     return Math.random() * (max - min) + min;
   }
 

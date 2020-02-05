@@ -1,6 +1,6 @@
 import express from 'express';
 
-export default function routes(DeviceSchemaModel, app) {
+export default function routes(DeviceSchemaModel) {
   const deviceSchemaRouter = express.Router();
 
   deviceSchemaRouter.get('/', (req, res) => {
