@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import { join } from 'path';
+import fs from 'fs';
 import dockerHostIp from 'docker-host-ip';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
@@ -7,7 +9,8 @@ import Agent from './agent';
 import deviceSchemaRouter from '../routes/deviceSchemaRouter';
 import agentRouter from '../routes/agentRouter';
 import agentModel from '../models/agent-model';
-import deviceSchemaModel from '../models/device-schema-model';
+import Device from './device';
+import { deviceSchemaModel as DeviceSchemaModel } from '../models/device-schema-model';
 
 class SnmpSimulatorApp {
   constructor() {
@@ -15,6 +18,25 @@ class SnmpSimulatorApp {
     this.agents = [];
     this.init();
     this.run();
+  }
+
+  static fillDbWithDeviceSchemas() {
+    DeviceSchemaModel.count({}, (err, count) => {
+      if (err) {
+        console.log(err);
+      } else if (count === 0) {
+        fs.readdir(join(process.cwd(), 'devices'), (fserr, files) => {
+          if (fserr) {
+            console.log('Error getting directory information.');
+          } else {
+            files.forEach((file) => {
+              const schema = new DeviceSchemaModel(Device.GetSchema(file.replace('.json', '')));
+              schema.save();
+            });
+          }
+        });
+      }
+    });
   }
 
   init() {
@@ -26,6 +48,8 @@ class SnmpSimulatorApp {
       useUnifiedTopology: true,
     });
 
+    SnmpSimulatorApp.fillDbWithDeviceSchemas();
+
     const api = express();
     const port = process.env.API_PORT || 34380;
 
@@ -33,7 +57,7 @@ class SnmpSimulatorApp {
     api.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
     api.use('/api/agents', agentRouter(agentModel, this));
-    api.use('/api/schema', deviceSchemaRouter(deviceSchemaModel, this));
+    api.use('/api/schema', deviceSchemaRouter(DeviceSchemaModel, this));
 
     api.listen(port, () => {
       console.log(`Runnint on port" ${port}`);
@@ -67,16 +91,15 @@ class SnmpSimulatorApp {
   static getHostIp() {
     dockerHostIp.default((error, result) => {
       if (result) {
-        console.log(process.env.hostIp);
-        process.env.hostIp = '0.0.0.0';// 'snmp-agent-simulator'//result;
-        console.log(process.env.hostIp);
+        process.env.hostIp = result;
       } else if (error) {
         process.env.hostIp = '127.0.0.1';
-        console.log(error);
       }
+      console.log(`Application is working on ${process.env.hostIp}`);
     });
   }
 }
+
 
 // eslint-disable-next-line no-unused-vars
 const simulator = new SnmpSimulatorApp();
