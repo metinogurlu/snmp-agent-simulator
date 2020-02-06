@@ -1,0 +1,1141 @@
+{
+    "name": "exagate-trifaze-pdu",
+    "disconnectAfterEachRequest": 100,
+    "maxDisconnectedDurationInMinute": 10,
+    "oids": [
+        {
+            "name": "C1 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.1",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C1 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.4",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C1 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.0",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C2 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.9",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C2 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.12",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C2 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.8",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C3 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.17",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C3 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.20",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C3 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.16",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C4 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.25",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C4 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.28",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C4 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.24",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C5 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.33",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C5 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.36",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C5 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.32",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C6 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.41",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C6 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.44",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "C6 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.40",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L1 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.49",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L1 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.51",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L1 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.48",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L2 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.57",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L2 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.59",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L2 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.56",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L3 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.65",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L3 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.67",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Input L3 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.64",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "PDU Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.72",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "PDU Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.76",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "PDU Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.73",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port01 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.80",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port01 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.81",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port01 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.83",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port01 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.79",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port02 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.88",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port02 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.89",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port02 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.91",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port02 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.87",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port03 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.96",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port03 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.97",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port03 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.99",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port03 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.95",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port04 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.104",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port04 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.105",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port04 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.107",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port04 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.103",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port05 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.112",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port05 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.113",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port05 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.115",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port05 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.111",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port06 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.120",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port06 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.121",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port06 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.123",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port06 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.119",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port07 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.128",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port07 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.129",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port07 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.131",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port07 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.127",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port08 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.136",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port08 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.137",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port08 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.139",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port08 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.135",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port09 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.144",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port09 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.145",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port09 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.147",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port09 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.143",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port10 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.152",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port10 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.153",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port10 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.155",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port10 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.151",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port11 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.160",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port11 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.161",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port11 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.163",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port11 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.159",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port12 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.168",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port12 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.169",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port12 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.171",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port12 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.167",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port13 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.176",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port13 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.177",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port13 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.179",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port13 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.175",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port14 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.184",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port14 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.185",
+            "multiplier": "100000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port14 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.187",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port14 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.183",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port15 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.192",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port15 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.193",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port15 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.195",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port15 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.191",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port16 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.200",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port16 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.201",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port16 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.203",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port16 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.199",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port17 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.208",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port17 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.209",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port17 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.211",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port17 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.207",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port18 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.216",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port18 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.217",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port18 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.219",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port18 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.215",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port19 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.224",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port19 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.225",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port19 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.227",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port19 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.223",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port20 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.232",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port20 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.233",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port20 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.235",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port20 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.231",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port21 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.240",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port21 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.241",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port21 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.243",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port21 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.239",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port22 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.248",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port22 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.249",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port22 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.251",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port22 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.247",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port23 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.256",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port23 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.257",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port23 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.259",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port23 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.255",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port24 Current",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.264",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port24 Energy",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.265",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port24 Power",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.267",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Port24 Voltage",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.263",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        }
+    ]
+}
