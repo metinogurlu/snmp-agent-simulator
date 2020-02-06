@@ -5,8 +5,8 @@ import Tag from './tag';
 export default class Device {
   constructor(deviceName) {
     this.deviceName = deviceName;
+    const config = Device.GetSchema(deviceName);
     this.tags = [];
-    const config = this.GetDeviceConfig();
     this.disconnectAfterEachRequest = config.disconnectAfterEachRequest;
     this.maxDisconnectedDurationInMinute = config.maxDisconnectedDurationInMinute;
     this.isDisconnected = false;
@@ -16,8 +16,8 @@ export default class Device {
     }
   }
 
-  GetDeviceConfig() {
-    const fileName = join(process.cwd(), 'devices', `${this.deviceName}.json`);
+  static GetSchema(deviceName) {
+    const fileName = join(process.cwd(), 'devices', `${deviceName}.json`);
     return JSON.parse(readFileSync(fileName));
   }
 }

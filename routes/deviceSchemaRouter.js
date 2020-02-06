@@ -4,11 +4,20 @@ export default function routes(DeviceSchemaModel) {
   const deviceSchemaRouter = express.Router();
 
   deviceSchemaRouter.get('/', (req, res) => {
-    DeviceSchemaModel.find({}, (err, agents) => {
+    DeviceSchemaModel.find({}, (err, schemas) => {
       if (err) {
         return res.send(err);
       }
-      return res.json(agents);
+      return res.json(schemas);
+    });
+  });
+
+  deviceSchemaRouter.get('/names', (req, res) => {
+    DeviceSchemaModel.find({}, '_id name', (err, schemas) => {
+      if (err) {
+        return res.send(err);
+      }
+      return res.json(schemas);
     });
   });
 

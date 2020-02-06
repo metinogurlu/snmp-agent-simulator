@@ -5,6 +5,8 @@ const { Schema } = mongoose;
 const agentSchema = new Schema({
   id: Schema.ObjectId,
   name: String,
+  disconnectAfterEachRequest: Number,
+  maxDisconnectedDurationInMinute: Number,
   port: Number,
   isActive: { type: Boolean, default: true },
 });

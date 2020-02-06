@@ -14,10 +14,12 @@ const oidSchema = new Schema({
 
 const deviceSchema = new Schema({
   id: Schema.ObjectId,
+  disconnectAfterEachRequest: Number,
+  maxDisconnectedDurationInMinute: Number,
   name: String,
   oids: [oidSchema],
 });
 
-export const oidModel = mongoose.model('oid', oidSchema);
-const DeviceSchemaModel = mongoose.model('deviceScema', deviceSchema);
-export default DeviceSchemaModel;
+const oidModel = mongoose.model('oid', oidSchema);
+const deviceSchemaModel = mongoose.model('deviceSchema', deviceSchema);
+export { deviceSchemaModel, oidModel };
