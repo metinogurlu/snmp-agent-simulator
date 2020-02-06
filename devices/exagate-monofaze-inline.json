@@ -1,0 +1,259 @@
+{
+    "name": "exagate-monofaze-inline",
+    "disconnectAfterEachRequest": 80,
+    "maxDisconnectedDurationInMinute": 5,
+    "oids": [
+        {
+            "name": "Giris_A(Akim)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.19",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Aktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.22",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Enerji)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.20",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Frekans)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.24",
+            "multiplier": "100",
+            "valueMin": "49",
+            "valueMax": "51",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Gorunur Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.23",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Guc Faktoru)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.21",
+            "multiplier": "1000",
+            "valueMin": "0.8",
+            "valueMax": "1",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Reaktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.25",
+            "multiplier": "1000",
+            "valueMin": "3",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Voltaj)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.18",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_A(Yuk)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.26",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "90",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Akim)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.51",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Aktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.54",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Enerji)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.52",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Frekans)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.56",
+            "multiplier": "100",
+            "valueMin": "49",
+            "valueMax": "51",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Gorunur Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.55",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Guc Faktoru)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.53",
+            "multiplier": "1000",
+            "valueMin": "0.8",
+            "valueMax": "1",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Reaktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.57",
+            "multiplier": "1000",
+            "valueMin": "3",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Voltaj)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.50",
+            "multiplier": "10",
+            "valueMin": "210",
+            "valueMax": "235",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Giris_B(Yuk)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.58",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "90",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_A(Akim)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.27",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_A(Aktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.29",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_A(Enerji)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.28",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_A(Gorunur Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.30",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_A(Reaktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.31",
+            "multiplier": "1000",
+            "valueMin": "3",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_B(Akim)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.59",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "32",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_B(Aktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.61",
+            "multiplier": "100",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_B(Enerji)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.60",
+            "multiplier": "1000000",
+            "valueMin": "0",
+            "valueMax": "30000",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_B(Gorunur Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.62",
+            "multiplier": "1000",
+            "valueMin": "0",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        },
+        {
+            "name": "Total_B(Reaktif Guc)",
+            "oid": ".1.3.6.1.4.1.35483.1.1.1.3.1.1.4.63",
+            "multiplier": "1000",
+            "valueMin": "3",
+            "valueMax": "3",
+            "changeFactor": "0.03",
+            "alarmFactor": "0.05"
+        }
+    ]
+}
