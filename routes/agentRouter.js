@@ -13,11 +13,17 @@ export default function routes(AgentModel, app) {
   });
 
   agentRouter.post('/', (req, res) => {
-    const agent = new AgentModel(req.body);
-    const port = app.createNewAgent(agent.name);
-    if (port !== undefined) agent.port = port;
-    agent.save();
-    return res.status(201).json(agent);
+    const agentModel = new AgentModel(req.body);
+    const agent = app.createNewAgent(agentModel.name);
+    if (agent.port !== undefined) agentModel.port = agent.port;
+    if (typeof agentModel.disconnectAfterEachRequest === 'undefined') {
+      agentModel.disconnectAfterEachRequest = agent.device.disconnectAfterEachRequest;
+    }
+    if (typeof agentModel.maxDisconnectedDurationInMinute === 'undefined') {
+      agentModel.maxDisconnectedDurationInMinute = agent.device.maxDisconnectedDurationInMinute;
+    }
+    agentModel.save();
+    return res.status(201).json(agentModel);
   });
 
   agentRouter.delete('/', (req, res) => {

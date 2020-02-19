@@ -1,15 +1,34 @@
 version: '3.4'
 
 services:
+  db:
+    image: mongo
+    ports:
+      - '27047:27017'
+    networks:
+      - smartpack4
+    volumes:
+      - mongo:/data/db
+
   snmp-agent-simulator:
     container_name: snmp-agent-simulator
     build:
       context: /mnt/d/github/snmp-agent-simulator/
       dockerfile: Dockerfile
+    env_file: ./.env
+    depends_on:
+      - db
     ports:
-      - '40000-50000:40000-50000/udp'   
+      - '40000-41000:40000-41000/udp'   
+      - '34380:34380'
     networks:
       - smartpack4
 
 networks:
   smartpack4:
+
+volumes:
+  snmp-agent-simulator:
+    driver: local
+  mongo:
+    driver: local

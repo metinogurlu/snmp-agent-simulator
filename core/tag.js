@@ -50,12 +50,16 @@ export default class Tag {
     } else if ((this.IsAlarmValue(nextValue) && this.IsOkForAlarm())) {
       this.alarmCount += 1;
     }
-
+    console.log(typeof this.currentValue, this.currentValue)
+    console.log(typeof nextValue, nextValue)
+    console.log(Math.floor(nextValue * this.multiplier))
+    
+    this.currentValue = nextValue;
     return Math.floor(nextValue * this.multiplier);
   }
 
   GetReArrangedValue() {
-    return Math.random() * (this.valueMax - this.valueMin) + this.valueMin;
+    return Math.random() * (Number(this.valueMax) - Number(this.valueMin)) + Number(this.valueMin);
   }
 
   IsAlarmValue(value) {

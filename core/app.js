@@ -77,8 +77,9 @@ class SnmpSimulatorApp {
       throw new Error('All ports already allocated!, There is no space for new device.');
     };
     const port = getNextPort();
-    this.agents.push(new Agent(deviceName, port));
-    return port;
+    const agent = new Agent(deviceName, port);
+    this.agents.push(agent);
+    return agent;
   }
 
   run() {
