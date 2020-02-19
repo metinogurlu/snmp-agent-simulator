@@ -14,7 +14,7 @@ eSas Snmp Agent Simulator acts as there are n number snmp devices on the network
 
 ### Installation
 
-eSaS Simulator requires [Node.js](https://nodejs.org/) v13+ to run.
+eSaS Simulator requires [Node.js](https://nodejs.org/) v13+ and [MongoDB](mongodb.com/) to run.
 Install the dependencies and devDependencies and start the server.
 ```sh
 $ npm install
