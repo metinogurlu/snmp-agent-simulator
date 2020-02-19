@@ -1,8 +1,8 @@
-FROM node:10
+FROM node:latest
 WORKDIR /
 COPY package*.json /
 RUN npm install
 
 COPY . .
-EXPOSE 40000-50000/udp
-CMD [ "node", "/core/app.js" ]
+EXPOSE 40000-41000/udp 34380
+CMD [ "npm", "start" ]
