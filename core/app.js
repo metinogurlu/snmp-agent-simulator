@@ -94,7 +94,7 @@ class SnmpSimulatorApp {
       if (result) {
         process.env.hostIp = result;
       } else if (error) {
-        process.env.hostIp = '127.0.0.1';
+        process.env.hostIp = '0.0.0.0';
       }
       console.log(`Application is working on ${process.env.hostIp}`);
     });
