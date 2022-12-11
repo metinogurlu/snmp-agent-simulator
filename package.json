@@ -24,7 +24,7 @@
     "docker-host-ip": "^1.0.1",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.8.7",
     "nodemon": "^2.0.2"
   },
